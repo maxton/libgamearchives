@@ -60,7 +60,7 @@ int8_t Stream::ReadInt8() {
 std::string Stream::ReadASCIINullTerminated(uint64_t limit) {
   std::stringstream str;
   char c;
-  while (str.tellg() < limit && Read((uint8_t*) &c, 1) == 1) {
+  while (str.tellg() < (int64_t)limit && Read((uint8_t*) &c, 1) == 1) {
     if (c == '\0') break;
     str << c;
   }

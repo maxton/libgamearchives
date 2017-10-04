@@ -15,9 +15,9 @@ class OffsetFile : public IFile {
   IDirectory* GetParent() override { return parent_; }
   std::shared_ptr<Stream> Open() override;
  private:
-  IDirectory* parent_;
   std::weak_ptr<Stream> archive_;
   uint64_t offset_;
+  IDirectory* parent_;
 };
 
 }

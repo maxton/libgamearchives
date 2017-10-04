@@ -1,4 +1,8 @@
 /build/
+*.dll
+*.a
+*.o
+*.so
 
 # TODO: Determine if syncing the CLion project is a good idea
 /.idea/

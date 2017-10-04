@@ -14,10 +14,11 @@ class ProtectedFileStream : public Stream {
       throw "Protected file footer was bigger than expected";
     }
     base->Seek(-size, SEEK_END);
-    uint8_t metadata[size];
+    auto metadata = new uint8_t[size];
     base->Read(metadata, size);
     current_key_ = key_ = CalculateKey(metadata);
     length_ = base->Length() - size;
+    delete[] metadata;
   }
   ~ProtectedFileStream() override = default;
   uint64_t Read(uint8_t* buf, uint64_t count) override;

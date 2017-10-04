@@ -8,7 +8,7 @@ namespace gamearchives {
 class HdrCryptStream : public Stream {
  public:
   explicit HdrCryptStream(std::shared_ptr<Stream> base)
-      : base_(std::move(base)), xor_(0), key_position_(0), position_(0) {
+      : base_(std::move(base)), xor_(0), position_(0), key_position_(0) {
     base->Seek(0, SEEK_CUR);
     // The initial key is found in the first 4 bytes.
     current_key_ = key_ = CryptRound(base->ReadInt32LE());
@@ -29,9 +29,9 @@ class HdrCryptStream : public Stream {
   void UpdateKey();
   int32_t CryptRound(int32_t val);
   std::shared_ptr<Stream> base_;
+  uint8_t xor_;
   uint64_t position_, key_position_, length_;
   int32_t key_, current_key_;
-  uint8_t xor_;
 };
 
 }

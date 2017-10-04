@@ -1,9 +1,11 @@
-cmake_minimum_required(VERSION 3.8)
-project(gamearchives_native)
+cmake_minimum_required(VERSION 3.5)
+project(libgamearchives)
 
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(src)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CSS_FLAGS} -Wall")
 
 # TODO: Clean this up
 set(SOURCE_FILES
@@ -34,5 +36,5 @@ set(SOURCE_FILES
         src/gamearchives/vfs/offset_file.h
         src/gamearchives/vfs/vfs.h
         src/gamearchives/gamearchives.h
-        src/gamearchives/gamearchives.cpp)
-add_library(gamearchives_native SHARED ${SOURCE_FILES})
+        src/gamearchives/gamearchives.cpp src/gamearchives/sys/platform.h src/gamearchives/sys/platform_win.h src/gamearchives/sys/platform_posix.h)
+add_library(gamearchives SHARED ${SOURCE_FILES})

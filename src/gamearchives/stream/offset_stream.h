@@ -21,8 +21,8 @@ class OffsetStream : public Stream {
   uint64_t Seek(int64_t offset, int whence) override;
   uint64_t Length() const override { return length_; }
  private:
-  uint64_t offset_, position_, length_;
   std::shared_ptr<Stream> stream_;
+  uint64_t offset_, length_, position_;
 };
 
 }

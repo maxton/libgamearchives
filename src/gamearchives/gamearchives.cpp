@@ -19,7 +19,7 @@ std::shared_ptr<Archive> LoadArchiveFromFile(std::shared_ptr<IFile> f) {
     try {
       return type->LoadFile(f);
     }
-    catch(std::exception& e) {
+    catch(std::exception&) {
       continue;
     }
   }

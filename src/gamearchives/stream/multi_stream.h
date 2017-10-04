@@ -30,9 +30,9 @@ class MultiStream : public Stream {
   uint64_t Length() const override { return length_; }
  private:
   uint64_t offsetToStream(uint64_t offset, Stream** stream_out);
-  uint64_t length_, position_;
   std::vector<std::shared_ptr<Stream>> streams_;
   std::vector<uint64_t> lengths_;
+  uint64_t length_, position_;
 };
 
 }
